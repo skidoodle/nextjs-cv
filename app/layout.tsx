@@ -1,11 +1,11 @@
 import "./globals.css";
-import {Inter} from "next/font/google";
-import {ServerThemeProvider} from "@wits/next-themes";
+import { Inter } from "next/font/google";
+import { ServerThemeProvider } from "@wits/next-themes";
 import Providers from "./providers";
-import {generalData} from "@/data/general";
-import type {Metadata} from "next";
+import { generalData } from "@/data/general";
+import type { Metadata } from "next";
 
-const inter = Inter({subsets: ["latin"]});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: `${generalData.name} - ${generalData.jobTitle}`,
@@ -28,15 +28,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children}: {
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
 }) {
   return (
     <ServerThemeProvider attribute="class">
       <html lang="en">
-      <body className={`${inter.className} dark:bg-neutral-900`}>
-      <Providers>{children}</Providers>
-      </body>
+        <body className={`${inter.className} dark:bg-neutral-900`}>
+          <Providers>{children}</Providers>
+        </body>
       </html>
     </ServerThemeProvider>
   );

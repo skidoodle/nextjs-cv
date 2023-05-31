@@ -1,11 +1,11 @@
 import Image from "next/image";
 import ThemeSwitch from "@/components/theme-switch";
-import {generalData} from "@/data/general";
-import {contentData} from "@/data/content";
-import type {Content} from "@/data/content";
+import { generalData } from "@/data/general";
+import { contentData } from "@/data/content";
+import type { Content } from "@/data/content";
 
 type ContentProps = Content;
-const Content: React.FC<ContentProps> = ({title, items}) => {
+const Content: React.FC<ContentProps> = ({ title, items }) => {
   return (
     <section className="my-14 text-sm">
       <h3 className="mb-6">{title}</h3>
@@ -13,16 +13,16 @@ const Content: React.FC<ContentProps> = ({title, items}) => {
         {items.map((item, index) => {
           return (
             <div className="flex" key={index}>
-              <div className="mr-8 max-w-[100px] w-full text-slate-400 dark:text-slate-400">
+              <div className="mr-8 w-full max-w-[100px] text-slate-400 dark:text-slate-400">
                 {item.date}
               </div>
-              <div className="flex flex-col flex-1">
+              <div className="flex flex-1 flex-col">
                 <h4>{item.title}</h4>
                 <p className="text-slate-600 dark:text-gray-400">
                   {item.subTitle}
                 </p>
                 {item.description ? (
-                  <p className="text-slate-600 dark:text-gray-400 mt-2">
+                  <p className="mt-2 text-slate-600 dark:text-gray-400">
                     {item.description}
                   </p>
                 ) : null}
@@ -32,13 +32,13 @@ const Content: React.FC<ContentProps> = ({title, items}) => {
         })}
       </div>
     </section>
-  )
+  );
 };
 
 export default function Home() {
   return (
     <>
-      <main className="max-w-xl mx-auto px-6 py-20 relative min-h-screen font-light">
+      <main className="relative mx-auto min-h-screen max-w-xl px-6 py-20 font-light">
         <section className="flex items-center">
           <Image
             alt="Author"
@@ -50,11 +50,11 @@ export default function Home() {
           <div className="ml-4">
             <h1 className="mb-0.5 text-xl text-slate-900 dark:text-slate-100">
               {generalData.name}
-              <span className="absolute top-15 right-0 h-16 w-16">
-                <ThemeSwitch/>
+              <span className="top-15 absolute right-0 h-16 w-16">
+                <ThemeSwitch />
               </span>
             </h1>
-            <p className="text-slate-600 dark:text-slate-300 text-sm">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               {generalData.jobTitle}
             </p>
             {generalData.website ? (
@@ -79,26 +79,24 @@ export default function Home() {
             <p>{generalData.about}</p>
           </div>
         </section>
-        {
-          contentData.map((content, index) => {
-            return <Content {...content} key={index}/>;
-          })
-        }
+        {contentData.map((content, index) => {
+          return <Content {...content} key={index} />;
+        })}
         <section className="my-14 text-sm">
           <h3 className="mb-6 text-slate-900">Contact</h3>
           <div className="flex flex-col gap-6">
             {generalData.contacts.map((contact, index) => {
               return (
                 <div className="flex" key={index}>
-                  <div className="mr-8 max-w-[100px] w-full text-slate-400 dark:text-slate-400">
+                  <div className="mr-8 w-full max-w-[100px] text-slate-400 dark:text-slate-400">
                     {contact.label}
                   </div>
-                  <div className="flex flex-col flex-1 text-slate-900 dark:text-slate-100">
+                  <div className="flex flex-1 flex-col text-slate-900 dark:text-slate-100">
                     <a
                       href={contact.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:underline inline-flex"
+                      className="inline-flex hover:underline"
                     >
                       {contact.value}
                       <svg
@@ -122,5 +120,5 @@ export default function Home() {
         </section>
       </main>
     </>
-  )
-};
+  );
+}

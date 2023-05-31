@@ -20,6 +20,6 @@ export const generalData = {
       label: "Github",
       value: "johndoe",
       href: "https://github.com/johndoe",
-    }
+    },
   ],
 };
